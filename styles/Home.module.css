@@ -1,0 +1,190 @@
+.CardLinkHome {
+    vertical-align: middle;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #282c34;
+    height: 25px;
+    display: inline-block;
+}
+
+.CardLink {
+    vertical-align: middle;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #BCBDC0;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    right: 10%;
+}
+
+.CardLink:hover,
+.CardLinkHome:hover {
+    color: white;
+    background-color: #f05f40;
+    text-decoration: none;
+}
+
+.CardLink p {
+    margin-top: 1px;
+}
+
+.header {
+    background-color: #222222;
+    color: white;
+    height: 52px;
+    margin-bottom: 5px;
+}
+
+.fixed{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 1;
+}
+
+.body {
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    color: white;
+}
+
+.footer p {
+    letter-spacing: 3px;
+    text-align: right;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.bottomAligned {
+    position: absolute;
+    bottom: 5px;
+    right: 45%;
+    margin: auto;
+}
+
+.card-text {
+    min-height: 10px;
+}
+
+.spaceS {
+    margin-bottom: 20px;
+}
+
+.spaceSTop {
+    margin-top: 20px;
+}
+
+.spaceXL {
+    margin-bottom: 40px;
+}
+
+.centeredTextOnly {
+    text-align: center;
+}
+
+.centeredText {
+    text-align: center;
+}
+
+.gray {
+    background-color: #BCBDC0 !important;
+}
+
+.Navigation {
+    float: right;
+}
+
+.Navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.Navigation ul li {
+    display: inline;
+    float: left;
+}
+
+.Navigation ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.Navigation ul li a:hover {
+    background-color: #f05f40;
+    font-weight: bold;
+}
+
+.NoBottomSpace{
+    bottom: inherit !important;
+}
+
+.Small {
+    padding: 0;
+    margin-bottom: 5px;
+}   
+
+.OneThird{
+    width: 34%;
+}
+
+.TwoThird{
+    width: 66%;
+}
+
+.formElementSpaceS{
+    margin-right: 10px;
+}
+
+.formSubmitButton{
+    background-color: #BCBDC0;
+    font-weight: bold;
+    border: none;
+    padding: 3px;
+}
+
+.formSubmitButton:hover{
+    background-color: #f05f40;
+    font-weight: bold;
+    color:white;
+    border: none;
+}
+
+.NoPadding{
+    padding-bottom: 0 !important;
+}
