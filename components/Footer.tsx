@@ -6,7 +6,7 @@ class Footer extends React.Component{
     return (  
       <div className={styles.footer}>
         <hr />
-        <p> Copyright ©Christian Hahn &amp; Anna Bründel {new Date().getFullYear()} </p>  
+        <p> Copyright ©Christian Hahn {new Date().getFullYear()} </p>  
       </div>
     );
   } 

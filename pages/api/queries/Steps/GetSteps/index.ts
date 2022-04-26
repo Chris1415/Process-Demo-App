@@ -17,7 +17,7 @@ export const getSteps = async(numberResults: number = 1000)
     }    
     `;  
  
-    console.log(eventListQuery);
+    //console.log(eventListQuery);
     const eventFeed: any = await fetchGraphQL(eventListQuery);
     // console.log("fetch events from graph: " + JSON.stringify(eventFeed));
     const eventArray: stepI[] = stepListParse(eventFeed);
