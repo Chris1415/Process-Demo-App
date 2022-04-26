@@ -14,7 +14,7 @@ export default function StepDetail({ step }: InferGetStaticPropsType<typeof getS
   return (
     <div className={styles.container}>
       <Head>
-        <title>{step.Title}</title>
+        <title>{step?.Title ?? "Step" }</title>
         <meta name="description" content="Event Detail" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

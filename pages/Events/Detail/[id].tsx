@@ -14,7 +14,7 @@ export default function EventDetail({ event }: InferGetStaticPropsType<typeof ge
   return (
     <div className={styles.container}>
       <Head>
-        <title>{event.Name}</title>
+        <title>{event?.Name ?? "Process"}</title>
         <meta name="description" content="Event Detail" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
