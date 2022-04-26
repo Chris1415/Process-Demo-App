@@ -38,9 +38,9 @@ function Step({ step, renditionType }: Props) {
                     <Col md={6}>
                       <h1>{step?.Title}</h1>
                       <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
-                      {step.Previous != "" ? (
+                      {step?.Previous != "" ?? false ? (
                         <Link
-                          href={{ pathname: "/Steps/Detail/" + step.Previous }}
+                          href={{ pathname: "/Steps/Detail/" + step?.Previous }}
                         >
                           <a className={styles.CardLink}>
                             <p>Previous Step</p>
@@ -48,8 +48,8 @@ function Step({ step, renditionType }: Props) {
                         </Link>
                       ) : null}
 
-                      {step.Next != "" ? (
-                        <Link href={{ pathname: "/Steps/Detail/" + step.Next }}>
+                      {step?.Next != "" ?? false ? (
+                        <Link href={{ pathname: "/Steps/Detail/" + step?.Next }}>
                           <a className={styles.CardLink}>
                             <p>Next Step</p>
                           </a>

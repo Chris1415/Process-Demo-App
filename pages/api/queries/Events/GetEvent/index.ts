@@ -12,7 +12,7 @@ export const getEvent = async (id: string ): Promise<{ event: eventI }> => {
       }
     }
     `;
-    console.log(singleEventQuery);
+    //console.log(singleEventQuery);
     const eventFeed: any = await fetchGraphQL(singleEventQuery);
     const mappedevent: eventI = eventParse(eventFeed.data.m_CMP_Campaign);
     return {
