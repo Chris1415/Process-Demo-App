@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { GetStaticProps } from 'next';
 import { getEvent } from '../../api/queries/Events/GetEvent';
 import { InferGetStaticPropsType } from 'next'
-import { getContentList } from '../../api/queries/Contents/GetContentList'
 import { RenditionTypes } from '../../../Consts'
 import { getEventList } from '../../api/queries/Events/GetEventList'
 
@@ -15,7 +14,7 @@ export default function EventDetail({ event }: InferGetStaticPropsType<typeof ge
   return (
     <div className={styles.container}>
       <Head>
-        <title>Event Detail</title>
+        <title>{event.Name}</title>
         <meta name="description" content="Event Detail" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

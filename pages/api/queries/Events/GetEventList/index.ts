@@ -8,15 +8,16 @@ export const getEventList = async(numberResults: number = 1000)
   try {
     const eventListQuery: any = `
     query{
-      allFL_Event(orderBy: DATE_DESC, first:${numberResults}){
+      allM_CMP_Campaign{
         total
         results {
           ${eventQuery}
         }
       }
     }    
-    `;
+    `;  
  
+    console.log(eventListQuery);
     const eventFeed: any = await fetchGraphQL(eventListQuery);
     // console.log("fetch events from graph: " + JSON.stringify(eventFeed));
     const eventArray: eventI[] = eventListParse(eventFeed);

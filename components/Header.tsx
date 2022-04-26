@@ -18,15 +18,7 @@ function Header() {
         <div className={styles.Navigation}>
         <ul>
           <li>
-          <Link href={{ pathname: '/Content/Overview' }}><a> News
-        </a></Link>
-          </li>
-          <li>
-          <Link href={{ pathname: '/Events/Overview' }}><a> Events
-        </a></Link>
-          </li>
-          <li>
-          <Link href={{ pathname: '/Accounts/Login' }}><a> Login
+          <Link href={{ pathname: '/Events/Overview' }}><a> Prozesse
         </a></Link>
           </li>
         </ul>

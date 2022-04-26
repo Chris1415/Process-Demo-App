@@ -16,119 +16,31 @@ type Props = {
 };
 
 function Event({ event, renditionType }: Props) {
-  var currentDate = new Date();
-  var eventDate = new Date(
-    event?.EventDateRaw?.Year,
-    event?.EventDateRaw?.Month,
-    event?.EventDateRaw?.Date
-  );
-
   return (
     <main className={styles.main}>
-      {/*  {event.MainAsset != null && event.MainAsset != undefined ? 
-        () => {
-          return event.MainAsset.Renditions.map((rendition, index) => {
-          if (rendition.resource != renditionType) {
-            return null;
-          }
-          return 
-            <Container>
-              <Row>
-                <Col md={12}>
-                  <Card className={styles.fullHeight}>
-                    <Card.Img variant="top" src={rendition.url} />
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
-          })
-        }
-      : null} */}
-      <Container>
-        <Row>
-          <Col md={12}>
-            <Card className={styles.fullHeight}>
-              <Card.Img
-                variant="top"
-                src={event?.MainAsset?.Renditions[0]?.url ?? ""}
-                alt={event?.MainAsset?.title}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
       <Container>
         <Row>
           <Col md={12}>
             <Jumbotron fluid className={styles.centeredText}>
               <Container>
                 <h1>{event?.Name}</h1>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: event?.Description?.replace("\n", ""),
-                  }}
-                />
                 <hr />
-                <div>
-                  <p>
-                    Date: <b>{event?.EventDate}</b>
-                  </p>
-                </div>
-                <hr />
-                <div>
-                  <p>Location</p>
-                  <p>
-                    <b>{event?.Location?.Name}</b>
-                  </p>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: event?.Location?.Address?.replace("\n", ""),
-                    }}
-                  />
-                </div>
-                <hr />
-                <div>
-                  <p>Organisation</p>
-                  {event?.Organizer?.length > 0 ? (
-                    <p>
-                      <b>
-                        {event.Organizer.map((organizer, index) => {
-                          return index == event.Organizer.length - 1
-                            ? organizer.Name
-                            : organizer.Name + ", ";
-                        })}
-                      </b>
-                    </p>
-                  ) : null}
-                </div>
-                <hr />
-                {currentDate > eventDate ? (
-                  <div>
-                    <p>Event vorbei</p>
-                    <b>
-                      Leider ist das Event abgelaufen und eine Registrierung
-                      nicht mehr möglich
-                    </b>
-                  </div>
-                ) : (
-                  <>
-                    <div className={styles.centeredText}>
-                      <b>Phase 3 </b> - Einführung von{" "}
-                      <b>Sitecore Ordercloud</b> für B2B, B2B2C und Marketplace
-                      Funktionalitäten
-                    </div>
-
-                    <Link href="https://www.google.de">
-                      <a
-                        className={[styles.CardLink, styles.NoBottomSpace].join(
-                          " "
-                        )}
-                      >
-                        <p>Jetzt Registrieren</p>
-                      </a>
-                    </Link>
-                  </>
-                )}
+                <Container>
+                  <Row>
+                    <Col md={6}>
+                      <Card className={styles.fullHeight}>
+                        <Card.Img
+                          variant="top"
+                          src={event?.MainAsset?.Renditions[0]?.url ?? ""}
+                          alt={event?.MainAsset?.title}
+                        />
+                      </Card>
+                    </Col>
+                    <Col md={6}>
+                      <div>Some further information on Process level</div>
+                    </Col>
+                  </Row>
+                </Container>
               </Container>
             </Jumbotron>
           </Col>
@@ -137,21 +49,29 @@ function Event({ event, renditionType }: Props) {
 
       <Container>
         <Row>
-          {event?.Assets?.length > 0
-            ? event.Assets.map((asset, index) => {
-                return asset.Renditions.map((rendition, index) => {
-                  if (rendition.resource != renditionType) {
-                    return null;
-                  }
-                  return (
-                    <Col md={4} key={index} className={styles.spaceS}>
-                      <Card className={styles.fullHeight}>
-                        <Card.Img variant="top" src={rendition.url} />
-                      </Card>
-                    </Col>
-                  );
-                });
-              })
+          {event?.Steps?.length > 0
+            ? event.Steps.map((step, index) => (
+                <Col md={3}>
+                  <Card className={styles.fullHeight} key={index}>
+                    <Card.Img
+                      variant="top"
+                      src={step?.MainAsset?.Renditions[0]?.url}
+                      alt={step?.MainAsset?.title}
+                    />
+                    <Card.Body className={styles.space}>
+                      <Card.Title>{step.Title}</Card.Title>
+                      <Card.Text className={styles.spaceXL}>
+                        <div dangerouslySetInnerHTML={{ __html: step.Text }} />
+                      </Card.Text>
+                      <Link href={{ pathname: "/Steps/Detail/" + step.Id }}>
+                        <a className={styles.CardLink}>
+                          <p>Details</p>
+                        </a>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))
             : null}
         </Row>
       </Container>

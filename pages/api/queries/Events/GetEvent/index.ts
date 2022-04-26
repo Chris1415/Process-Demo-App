@@ -7,13 +7,14 @@ export const getEvent = async (id: string ): Promise<{ event: eventI }> => {
   try {
     const singleEventQuery: any = `
     query{
-      fL_Event(id:"${id}") {
+      m_CMP_Campaign(id:"${id}") {
         ${eventQuery}
       }
     }
     `;
+    console.log(singleEventQuery);
     const eventFeed: any = await fetchGraphQL(singleEventQuery);
-    const mappedevent: eventI = eventParse(eventFeed.data.fL_Event);
+    const mappedevent: eventI = eventParse(eventFeed.data.m_CMP_Campaign);
     return {
       event: mappedevent,
     };

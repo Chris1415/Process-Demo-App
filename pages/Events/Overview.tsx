@@ -8,6 +8,10 @@ import { GetStaticProps } from "next";
 import { getEventList } from "../api/queries/Events/GetEventList";
 import { InferGetStaticPropsType } from "next";
 import { RenditionTypes } from "../../Consts";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function ContentOverview({
   events,
@@ -20,6 +24,17 @@ export default function ContentOverview({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <Container>
+          <Row>
+            <Col md={12}>
+              <Jumbotron fluid className={styles.centeredText}>
+                <Container>
+                  <h1>Processes</h1>
+                </Container>
+              </Jumbotron>
+            </Col>
+          </Row>
+        </Container>
       <EventList
         events={events}
         grid={6}

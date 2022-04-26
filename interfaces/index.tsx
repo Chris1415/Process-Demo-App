@@ -1,15 +1,3 @@
-export interface contentI {
-  Name: string;
-  PublishStatus: string;
-  Description: string;
-  Content: string;
-  Introduction: string;
-  assets: assetI[];
-  Id: string;
-  Author: string;
-  ReleaseDate: string;
-}
-
 export interface renditionI {
   relativeUrl: string;
   versionHash: string;
@@ -25,43 +13,27 @@ export interface assetI {
   Renditions: renditionI[];
 }
 
-export interface contentDataI {
-  contents: contentI[];
-}
-
-export interface productI {
-  Name: string;
-  Id: string;
-  Price: string;
-  assets: assetI[];
-  contents: contentI[];
-  LongDescription: string;
-  Catalogs: string[];
-}
 
 export interface eventI{
   Name: string;
   Id: string;
-  Description: string;
-  Location: locationI;
-  Organizer: organizerI[];
   Assets: assetI[];
   MainAsset: assetI;
-  EventDate : string;  
-  EventDateRaw : dateI;
+  Steps: stepI[];
 }
 
-export interface locationI{
-  Name: string;
+export interface stepI{
+  ValidFromRaw: string;
+  ValidToRaw: string;
+  ValidFrom: dateI;
+  ValidTo: dateI;
+  Title: string;
+  Text: string;
+  Assets: assetI[];
+  MainAsset: assetI;
   Id: string;
-  Address: string;
-  Asset: assetI;
-}
-
-export interface organizerI{
-  Name: string;
-  Id: string;
-  Asset: assetI;
+  Previous: string;
+  Next: string;
 }
 
 export interface dateI{

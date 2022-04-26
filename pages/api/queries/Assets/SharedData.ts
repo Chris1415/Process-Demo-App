@@ -15,12 +15,3 @@ assetToPublicLink {
 }
 renditions
 `
-
-// Needs to be customized added to graphQL -> Not OOTB
-const tagToAsset = `
-tagToAsset{
-  results{
-    tagName
-    autoCreated
-  }
-} `
