@@ -34,6 +34,7 @@ export interface stepI{
   Id: string;
   Previous: string;
   Next: string;
+  Process: string;
 }
 
 export interface dateI{

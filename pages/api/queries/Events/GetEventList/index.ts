@@ -8,7 +8,7 @@ export const getEventList = async(numberResults: number = 1000)
   try {
     const eventListQuery: any = `
     query{
-      allM_CMP_Campaign{
+      allDemo_CMP_Process{
         total
         results {
           ${eventQuery}

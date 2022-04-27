@@ -1,6 +1,9 @@
 import { assetQuery } from "../Assets/SharedData";
 
 export const stepQuery = `
+    processToContent{
+        id
+    }
     workInstruction_Title
     workInstruction_WorkInstructionText
     workInstruction_Instructionvalidfrom

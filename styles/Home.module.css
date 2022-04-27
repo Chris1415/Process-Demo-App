@@ -32,6 +32,23 @@
     right: 10%;
 }
 
+.CardLinkDetail {
+    vertical-align: middle;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: #BCBDC0;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
 .CardLink:hover,
 .CardLinkHome:hover {
     color: white;

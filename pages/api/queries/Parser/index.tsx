@@ -56,8 +56,13 @@ function singleStepParse(stepsFeed: any): stepI {
           ).toLocaleDateString()
         : "",
     Id: stepsFeed.id ?? "",
-    Previous: stepsFeed.reference_WorkInstruction_PreviousStep_Parents?.results[0]?.id ?? "",
-    Next: stepsFeed.reference_WorkInstruction_NextStep_Parents?.results[0]?.id ?? ""
+    Previous:
+      stepsFeed.reference_WorkInstruction_PreviousStep_Parents?.results[0]
+        ?.id ?? "",
+    Next:
+      stepsFeed.reference_WorkInstruction_NextStep_Parents?.results[0]?.id ??
+      "",
+      Process: stepsFeed?.processToContent?.id ?? ""
   };
 
   return step;
@@ -65,20 +70,22 @@ function singleStepParse(stepsFeed: any): stepI {
 
 function singleEventParse(eventFeed: any): eventI {
   const assetArray: assetI[] = [];
-  eventFeed.cmpCampaignToAsset?.results?.length > 0
-    ? eventFeed.cmpCampaignToAsset.results.map((pa: any) => {
+  eventFeed.cmpProcessToAsset?.results?.length > 0
+    ? eventFeed.cmpProcessToAsset.results.map((pa: any) => {
         var asset = assetParse(pa);
         assetArray.push(asset);
       })
     : null;
 
   const stepsArray: stepI[] = [];
-  eventFeed.campaignToContent?.results?.length > 0
-    ? eventFeed.campaignToContent.results.map((st: any) => {
+  eventFeed.processToContent?.results?.length > 0
+    ? eventFeed.processToContent.results.map((st: any) => {
         var step = singleStepParse(st);
         stepsArray.push(step);
       })
     : null;
+
+  const sortedStepsArray = SortSteps(stepsArray);
 
   var dateFeed = new Date(eventFeed?.date) ?? null;
   const date: dateI = {
@@ -88,11 +95,11 @@ function singleEventParse(eventFeed: any): eventI {
   };
   const event: eventI = {
     Id: eventFeed.id ?? "",
-    Name: eventFeed.campaign_Name ?? "",
+    Name: eventFeed.process_Name["en-US"] ?? "",
     Assets: assetArray,
     MainAsset:
       assetArray != null && assetArray.length > 0 ? assetArray[0] : null,
-    Steps: stepsArray,
+    Steps: sortedStepsArray,
   };
 
   return event;
@@ -101,6 +108,36 @@ function singleEventParse(eventFeed: any): eventI {
 //#endregion
 
 //#region Interface
+
+function SortSteps(steps: stepI[]): stepI[] {
+  var sortedSteps: stepI[] = [];
+  var firstStep = null;
+  for (var i = 0; i < steps.length; i++) {
+    firstStep = steps[i];
+    if (firstStep.Previous == "") {
+      sortedSteps.push(firstStep);
+      break;
+    }
+  }
+
+  if (firstStep == null) {
+    return steps;
+  }
+
+  var nextMatch = firstStep.Next;
+  var i = 0;
+  do {
+    var nextStep = steps[i];
+    if (nextStep != null && (nextStep?.Id ?? "") == nextMatch) {
+      sortedSteps.push(nextStep);
+      nextMatch = nextStep.Next;
+      i = -1;
+    }
+    i++;
+  } while (nextStep != null);
+
+  return sortedSteps;
+}
 
 export function assetParse(assetFeed: any): assetI {
   var renditions: renditionI[] = [];
@@ -123,8 +160,8 @@ export function assetParse(assetFeed: any): assetI {
 
 export function eventListParse(eventFeed: any): eventI[] {
   var eventArray: eventI[] = [];
-  eventFeed.data.allM_CMP_Campaign?.results?.length > 0
-    ? eventFeed.data.allM_CMP_Campaign.results.map((e: any) => {
+  eventFeed.data.allDemo_CMP_Process?.results?.length > 0
+    ? eventFeed.data.allDemo_CMP_Process.results.map((e: any) => {
         var event = eventParse(e);
         eventArray.push(event);
       })

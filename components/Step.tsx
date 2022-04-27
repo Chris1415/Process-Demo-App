@@ -39,25 +39,46 @@ function Step({ step, renditionType }: Props) {
                       <h1>{step?.Title}</h1>
                       <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
                       {step?.Previous != "" ?? false ? (
-                        <Link
-                          href={{ pathname: "/Steps/Detail/" + step?.Previous }}
-                        >
-                          <a className={styles.CardLink}>
-                            <p>Previous Step</p>
-                          </a>
-                        </Link>
+                        <div>
+                          <Link
+                            href={{
+                              pathname: "/Steps/Detail/" + step?.Previous,
+                            }}
+                          >
+                            <a className={styles.CardLinkDetail}>
+                              <p>Previous Step</p>
+                            </a>
+                          </Link>
+                        </div>
                       ) : null}
 
                       {step?.Next != "" ?? false ? (
-                        <Link href={{ pathname: "/Steps/Detail/" + step?.Next }}>
-                          <a className={styles.CardLink}>
-                            <p>Next Step</p>
-                          </a>
-                        </Link>
+                        <div>
+                          <Link
+                            href={{ pathname: "/Steps/Detail/" + step?.Next }}
+                          >
+                            <a className={styles.CardLinkDetail}>
+                              <p>Next Step</p>
+                            </a>
+                          </Link>
+                        </div>
                       ) : null}
                     </Col>
                   </Row>
                 </Container>
+              </Container>
+              <Container>
+                  <Row>
+                      <Col md={3}>
+                      <Link
+                            href={{ pathname: "/Events/Detail/" + step?.Process }}
+                          >
+                            <a className={styles.CardLinkDetail}>
+                              <p>Back to Process</p>
+                            </a>
+                          </Link>
+                      </Col>
+                  </Row>
               </Container>
             </Jumbotron>
           </Col>

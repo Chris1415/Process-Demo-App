@@ -61,9 +61,9 @@ function Event({ event, renditionType }: Props) {
                     <Card.Body className={styles.space}>
                       <Card.Title>{step.Title}</Card.Title>
                       <Card.Text className={styles.spaceXL}>
-                        <div dangerouslySetInnerHTML={{ __html: step.Text }} />
+                        <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
                       </Card.Text>
-                      <Link href={{ pathname: "/Steps/Detail/" + step.Id }}>
+                      <Link href={{ pathname: "/Steps/Detail/" + step?.Id }}>
                         <a className={styles.CardLink}>
                           <p>Details</p>
                         </a>
