@@ -18,7 +18,7 @@ function Header() {
         <div className={styles.Navigation}>
         <ul>
           <li>
-          <Link href={{ pathname: '/Events/Overview' }}><a> Prozesse
+          <Link href={{ pathname: '/Events/Overview' }}><a> Processes
         </a></Link>
           </li>
         </ul>

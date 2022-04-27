@@ -37,7 +37,7 @@ export default function Home({ events }: Props) {
               <Jumbotron fluid className={styles.centeredText}>
                 <Container>
                   <h1>Rosen</h1>
-                  <div>Immer auf dem neusten Stand sein</div>
+                  <div>Demo App - Content Hub - NextJS</div>
                 </Container>
               </Jumbotron>
             </Col>
@@ -50,7 +50,7 @@ export default function Home({ events }: Props) {
                 <Card.Body className={styles.centeredTextOnly}>
                   <Card.Title>
                     {" "}
-                    <h2>Neuste Prozesse</h2>
+                    <h2>Newest Processes</h2>
                   </Card.Title>
                   <EventList
                     events={events}
