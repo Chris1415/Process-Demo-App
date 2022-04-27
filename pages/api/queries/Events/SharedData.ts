@@ -3,7 +3,11 @@ import { assetQuery } from "../Assets/SharedData";
 export const eventQuery =
   `
   id
+  processDescription
   process_Name
+  cmpProcessToMasterAsset{
+    ${assetQuery}
+  }
   cmpProcessToAsset{
      results{${assetQuery}}
   }
@@ -29,6 +33,9 @@ export const eventQuery =
           }
         }
       }
+    }
+    cmpContentToMasterLinkedAsset{
+      results{${assetQuery}}
     }
     cmpContentToLinkedAsset{
       results{ ${assetQuery}}

@@ -38,7 +38,9 @@ function singleStepParse(stepsFeed: any): stepI {
   const step: stepI = {
     Assets: assetArray,
     MainAsset:
-      assetArray != null && assetArray.length > 0 ? assetArray[0] : null,
+      stepsFeed?.cmpContentToMasterLinkedAsset?.results[0] != null
+        ? assetParse(stepsFeed?.cmpContentToMasterLinkedAsset?.results[0])
+        : null,
     Title: stepsFeed.workInstruction_Title ?? "",
     Text: stepsFeed.workInstruction_WorkInstructionText ?? "",
     ValidFrom: stepsFeed.workInstruction_Instructionvalidfrom ?? "",
@@ -62,7 +64,7 @@ function singleStepParse(stepsFeed: any): stepI {
     Next:
       stepsFeed.reference_WorkInstruction_NextStep_Parents?.results[0]?.id ??
       "",
-      Process: stepsFeed?.processToContent?.id ?? ""
+    Process: stepsFeed?.processToContent?.id ?? "",
   };
 
   return step;
@@ -97,9 +99,9 @@ function singleEventParse(eventFeed: any): eventI {
     Id: eventFeed.id ?? "",
     Name: eventFeed.process_Name["en-US"] ?? "",
     Assets: assetArray,
-    MainAsset:
-      assetArray != null && assetArray.length > 0 ? assetArray[0] : null,
+    MainAsset: assetParse(eventFeed.cmpProcessToMasterAsset),
     Steps: sortedStepsArray,
+    Description : eventFeed?.processDescription["en-US"] ?? ""
   };
 
   return event;
@@ -141,7 +143,7 @@ function SortSteps(steps: stepI[]): stepI[] {
 
 export function assetParse(assetFeed: any): assetI {
   var renditions: renditionI[] = [];
-  assetFeed.assetToPublicLink?.results?.length > 0
+  assetFeed?.assetToPublicLink?.results?.length > 0
     ? assetFeed.assetToPublicLink.results.map((publicLink: any) => {
         var rendition = renditionParse(publicLink);
         renditions.push(rendition);
@@ -149,9 +151,9 @@ export function assetParse(assetFeed: any): assetI {
     : null;
 
   const asset: assetI = {
-    title: assetFeed.title,
-    id: assetFeed.id,
-    fileName: assetFeed.fileName,
+    title: assetFeed?.title ?? "",
+    id: assetFeed?.id ?? "",
+    fileName: assetFeed?.fileName ?? "",
     Renditions: renditions,
   };
 

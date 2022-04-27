@@ -37,7 +37,7 @@ function Event({ event, renditionType }: Props) {
                       </Card>
                     </Col>
                     <Col md={6}>
-                      <div>Some further information on Process level</div>
+                      <div>{event?.Description}</div>
                     </Col>
                   </Row>
                 </Container>
@@ -46,12 +46,17 @@ function Event({ event, renditionType }: Props) {
           </Col>
         </Row>
       </Container>
-
+      <hr />
       <Container>
+        <Row>
+          <Col md={12}>
+            <h2>Steps</h2>
+          </Col>
+        </Row>
         <Row>
           {event?.Steps?.length > 0
             ? event.Steps.map((step, index) => (
-                <Col md={3}>
+                <Col key={step.Id} md={3}>
                   <Card className={styles.fullHeight} key={index}>
                     <Card.Img
                       variant="top"
@@ -59,7 +64,7 @@ function Event({ event, renditionType }: Props) {
                       alt={step?.MainAsset?.title}
                     />
                     <Card.Body className={styles.space}>
-                      <Card.Title>{step.Title}</Card.Title>
+                      <Card.Title>{step?.Title}</Card.Title>
                       <Card.Text className={styles.spaceXL}>
                         <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
                       </Card.Text>
@@ -74,6 +79,31 @@ function Event({ event, renditionType }: Props) {
               ))
             : null}
         </Row>
+      </Container>
+      <hr />
+      <Container>
+        {event?.Assets?.length > 0
+          ? event.Assets.map((asset) => (
+              <>
+                <Row>
+                  <Col md={12}>
+                    <h2>More Assets</h2>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={3}>
+                    <Card className={styles.fullHeight}>
+                      <Card.Img
+                        variant="top"
+                        src={asset?.Renditions[0]?.url ?? ""}
+                        alt={asset?.title}
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+              </>
+            ))
+          : null}
       </Container>
     </main>
   );

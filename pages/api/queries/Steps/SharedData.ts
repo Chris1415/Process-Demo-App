@@ -23,7 +23,10 @@ export const stepQuery = `
         }
         }
     }
-        cmpContentToLinkedAsset{
+    cmpContentToLinkedAsset{
+    results{${assetQuery}}
+    }
+    cmpContentToMasterLinkedAsset{
         results{${assetQuery}}
     }
 

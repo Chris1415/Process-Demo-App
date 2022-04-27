@@ -20,6 +20,7 @@ export interface eventI{
   Assets: assetI[];
   MainAsset: assetI;
   Steps: stepI[];
+  Description: string;
 }
 
 export interface stepI{

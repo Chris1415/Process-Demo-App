@@ -68,21 +68,45 @@ function Step({ step, renditionType }: Props) {
                 </Container>
               </Container>
               <Container>
-                  <Row>
-                      <Col md={3}>
-                      <Link
-                            href={{ pathname: "/Events/Detail/" + step?.Process }}
-                          >
-                            <a className={styles.CardLinkDetail}>
-                              <p>Back to Process</p>
-                            </a>
-                          </Link>
-                      </Col>
-                  </Row>
+                <Row>
+                  <Col md={3}>
+                    <Link
+                      href={{ pathname: "/Events/Detail/" + step?.Process }}
+                    >
+                      <a className={styles.CardLinkDetail}>
+                        <p>Back to Process</p>
+                      </a>
+                    </Link>
+                  </Col>
+                </Row>
               </Container>
             </Jumbotron>
           </Col>
         </Row>
+      </Container>
+      <Container>
+        {step?.Assets?.length > 0
+          ? step.Assets.map((asset) => (
+              <>
+                <Row>
+                  <Col md={12}>
+                    <h2>More Assets</h2>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={3}>
+                    <Card className={styles.fullHeight}>
+                      <Card.Img
+                        variant="top"
+                        src={asset?.Renditions[0]?.url ?? ""}
+                        alt={asset?.title}
+                      />
+                    </Card>
+                  </Col>
+                </Row>
+              </>
+            ))
+          : null}
       </Container>
     </>
   );
