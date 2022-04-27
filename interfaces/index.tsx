@@ -11,6 +11,7 @@ export interface assetI {
   id: string;
   title: string;
   Renditions: renditionI[];
+  Type: string;
 }
 
 
