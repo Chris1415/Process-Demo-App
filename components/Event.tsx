@@ -82,14 +82,16 @@ function Event({ event, renditionType }: Props) {
       </Container>
       <hr />
       <Container>
+        {event?.Assets?.length > 0 ? (
+          <Row>
+            <Col md={12}>
+              <h2>More Assets</h2>
+            </Col>
+          </Row>
+        ) : null}
         {event?.Assets?.length > 0
           ? event.Assets.map((asset) => (
               <>
-                <Row>
-                  <Col md={12}>
-                    <h2>More Assets</h2>
-                  </Col>
-                </Row>
                 <Row>
                   <Col md={3}>
                     <Card className={styles.fullHeight}>

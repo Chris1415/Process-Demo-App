@@ -85,14 +85,16 @@ function Step({ step, renditionType }: Props) {
         </Row>
       </Container>
       <Container>
+        {step?.Assets?.length > 0 ? (
+          <Row>
+            <Col md={12}>
+              <h2>More Assets</h2>
+            </Col>
+          </Row>
+        ) : null}
         {step?.Assets?.length > 0
           ? step.Assets.map((asset) => (
               <>
-                <Row>
-                  <Col md={12}>
-                    <h2>More Assets</h2>
-                  </Col>
-                </Row>
                 <Row>
                   <Col md={3}>
                     <Card className={styles.fullHeight}>
