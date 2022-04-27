@@ -159,15 +159,13 @@ export function assetParse(assetFeed: any): assetI {
       })
     : null;
 
-  if (assetFeed?.fileName.includes(".mp4")) {
-    return null;
-  }
-
   const asset: assetI = {
     title: assetFeed?.title ?? "",
     id: assetFeed?.id ?? "",
     fileName: assetFeed?.fileName ?? "",
     Renditions: renditions,
+    Type : assetFeed?.fileName.includes(".mp4") ? "mp4" : "jpg"
+
   };
 
   return asset;

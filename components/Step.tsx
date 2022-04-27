@@ -9,6 +9,7 @@ import { stepI } from "../interfaces";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import CardImg from "react-bootstrap/esm/CardImg";
 import Link from "next/link";
+import ReactPlayer from "react-player";
 
 type Props = {
   step: stepI;
@@ -94,7 +95,8 @@ function Step({ step, renditionType }: Props) {
         ) : null}
         <Row>
           {step?.Assets?.length > 0
-            ? step.Assets.map((asset) => (
+            ? step.Assets.map((asset) =>
+                asset.Type == "jpg" ? (
                   <Col md={3}>
                     <Card className={styles.fullHeight}>
                       <Card.Img
@@ -104,7 +106,23 @@ function Step({ step, renditionType }: Props) {
                       />
                     </Card>
                   </Col>
-              ))
+                ) : null
+              )
+            : null}
+        </Row>
+        <hr/>
+        <Row>
+          {step?.Assets?.length > 0
+            ? step.Assets.map((asset) =>
+                asset.Type == "mp4" ? (
+                  <Col md={12}>
+                    <ReactPlayer
+                      controls={true}
+                      url={asset?.Renditions[0]?.url ?? ""}
+                    />
+                  </Col>
+                ) : null
+              )
             : null}
         </Row>
       </Container>
