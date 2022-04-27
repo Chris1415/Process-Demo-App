@@ -62,7 +62,7 @@ function singleStepParse(stepsFeed: any): stepI {
         : "",
     Id: stepsFeed.id ?? "",
     Previous:
-      stepsFeed.reference_WorkInstruction_PreviousStep_Parents?.results[0]
+      stepsFeed.reference_WorkInstruction_NextStep_Children?.results[0]
         ?.id ?? "",
     Next:
       stepsFeed.reference_WorkInstruction_NextStep_Parents?.results[0]?.id ??
@@ -101,11 +101,14 @@ function singleEventParse(eventFeed: any): eventI {
     Month: dateFeed?.getMonth() ?? 0,
     Date: dateFeed?.getDate() ?? 0,
   };
+
   const event: eventI = {
     Id: eventFeed.id ?? "",
     Name: eventFeed.process_Name["en-US"] ?? "",
     Assets: assetArray,
-    MainAsset: assetParse(eventFeed.cmpProcessToMasterAsset),
+    MainAsset: eventFeed?.cmpProcessToMasterAsset?.results[0] != null
+    ? assetParse(eventFeed.cmpProcessToMasterAsset.results[0])
+    : null,
     Steps: sortedStepsArray,
     Description: eventFeed?.processDescription["en-US"] ?? "",
   };

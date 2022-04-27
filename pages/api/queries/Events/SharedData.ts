@@ -6,7 +6,7 @@ export const eventQuery =
   processDescription
   process_Name
   cmpProcessToMasterAsset{
-    ${assetQuery}
+    results{${assetQuery}}
   }
   cmpProcessToAsset{
      results{${assetQuery}}
@@ -19,14 +19,14 @@ export const eventQuery =
       workInstruction_Instructionvalidfrom
       workInstruction_Instructionvalidto
       workInstruction_WorkInstructionText
-      reference_WorkInstruction_NextStep_Parents {
+      reference_WorkInstruction_NextStep_Children {
         results{
           ... on M_Content_WorkInstruction {
             id
           }
         }
       }
-      reference_WorkInstruction_PreviousStep_Parents {
+      reference_WorkInstruction_NextStep_Parents {
         results{
           ... on M_Content_WorkInstruction {
             id
