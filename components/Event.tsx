@@ -89,10 +89,10 @@ function Event({ event, renditionType }: Props) {
             </Col>
           </Row>
         ) : null}
-        {event?.Assets?.length > 0
-          ? event.Assets.map((asset) => (
-              <>
-                <Row>
+        <Row>
+          {event?.Assets?.length > 0
+            ? event.Assets.map((asset) => (
+                <>
                   <Col md={3}>
                     <Card className={styles.fullHeight}>
                       <Card.Img
@@ -102,10 +102,10 @@ function Event({ event, renditionType }: Props) {
                       />
                     </Card>
                   </Col>
-                </Row>
-              </>
-            ))
-          : null}
+                </>
+              ))
+            : null}
+        </Row>
       </Container>
     </main>
   );

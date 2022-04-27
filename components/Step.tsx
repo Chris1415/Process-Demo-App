@@ -92,10 +92,9 @@ function Step({ step, renditionType }: Props) {
             </Col>
           </Row>
         ) : null}
-        {step?.Assets?.length > 0
-          ? step.Assets.map((asset) => (
-              <>
-                <Row>
+        <Row>
+          {step?.Assets?.length > 0
+            ? step.Assets.map((asset) => (
                   <Col md={3}>
                     <Card className={styles.fullHeight}>
                       <Card.Img
@@ -105,10 +104,9 @@ function Step({ step, renditionType }: Props) {
                       />
                     </Card>
                   </Col>
-                </Row>
-              </>
-            ))
-          : null}
+              ))
+            : null}
+        </Row>
       </Container>
     </>
   );
