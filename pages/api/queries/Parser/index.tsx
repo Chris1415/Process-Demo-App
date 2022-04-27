@@ -31,7 +31,10 @@ function singleStepParse(stepsFeed: any): stepI {
   stepsFeed.cmpContentToLinkedAsset?.results?.length > 0
     ? stepsFeed.cmpContentToLinkedAsset.results.map((as: any) => {
         var asset = assetParse(as);
-        assetArray.push(asset);
+        if(asset != null){
+          assetArray.push(asset);
+        }
+    
       })
     : null;
 
@@ -75,7 +78,10 @@ function singleEventParse(eventFeed: any): eventI {
   eventFeed.cmpProcessToAsset?.results?.length > 0
     ? eventFeed.cmpProcessToAsset.results.map((pa: any) => {
         var asset = assetParse(pa);
-        assetArray.push(asset);
+        if(asset != null){
+          assetArray.push(asset);
+        }
+        
       })
     : null;
 
@@ -101,7 +107,7 @@ function singleEventParse(eventFeed: any): eventI {
     Assets: assetArray,
     MainAsset: assetParse(eventFeed.cmpProcessToMasterAsset),
     Steps: sortedStepsArray,
-    Description : eventFeed?.processDescription["en-US"] ?? ""
+    Description: eventFeed?.processDescription["en-US"] ?? "",
   };
 
   return event;
@@ -149,6 +155,10 @@ export function assetParse(assetFeed: any): assetI {
         renditions.push(rendition);
       })
     : null;
+
+  if (assetFeed?.fileName.includes(".mp4")) {
+    return null;
+  }
 
   const asset: assetI = {
     title: assetFeed?.title ?? "",
