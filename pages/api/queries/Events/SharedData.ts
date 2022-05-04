@@ -5,6 +5,18 @@ export const eventQuery =
   id
   processDescription
   process_Name
+  processToSubProcess{
+    taxonomyName
+  }
+  task
+  processToProductFamily{
+    results{
+      productFamilyName
+    }
+  }
+  workCluster
+  processDescription
+  workPackage
   cmpProcessToMasterAsset{
     results{${assetQuery}}
   }
@@ -14,21 +26,18 @@ export const eventQuery =
   processToContent {
   results {
     id
-    ... on M_Content_WorkInstruction {
-      workInstruction_Title
-      workInstruction_Instructionvalidfrom
-      workInstruction_Instructionvalidto
-      workInstruction_WorkInstructionText
+    ... on M_Content_WorkInstructionTemplate {
+      content_Name
       reference_WorkInstruction_NextStep_Children {
         results{
-          ... on M_Content_WorkInstruction {
+          ... on M_Content_WorkInstructionTemplate {
             id
           }
         }
       }
       reference_WorkInstruction_NextStep_Parents {
         results{
-          ... on M_Content_WorkInstruction {
+          ... on M_Content_WorkInstructionTemplate {
             id
           }
         }

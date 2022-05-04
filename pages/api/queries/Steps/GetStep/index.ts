@@ -7,14 +7,14 @@ export const getStep = async (id: string): Promise<{ step: stepI }> => {
   try {
     const singleStepQuery: any = `
     query{
-        m_Content_WorkInstruction(id:"${id}") {
+      m_Content_WorkInstructionTemplate(id:"${id}") {
         ${stepQuery}
       }
     }
     `;
-    //console.log(singleStepQuery);
+    console.log(singleStepQuery);
     const stepFeed: any = await fetchGraphQL(singleStepQuery);
-    const mappedStep: stepI = stepParse(stepFeed.data.m_Content_WorkInstruction);
+    const mappedStep: stepI = stepParse(stepFeed.data.m_Content_WorkInstructionTemplate);
     return {
       step: mappedStep,
     };

@@ -22,21 +22,52 @@ export interface eventI{
   MainAsset: assetI;
   Steps: stepI[];
   Description: string;
+  WorkPackage: string;
+  ProcessDescription: string;
+  WorkCluster: string;
+  ProductFamilies: string[];
+  Task: string;
+  SubProcess: string;
 }
 
 export interface stepI{
-  ValidFromRaw: string;
-  ValidToRaw: string;
-  ValidFrom: dateI;
-  ValidTo: dateI;
   Title: string;
-  Text: string;
   Assets: assetI[];
   MainAsset: assetI;
   Id: string;
   Previous: string;
   Next: string;
   Process: string;
+  StepNumber: string;
+  GeneralSubjectInfo: string;
+  SupportiveWBSStepInfo: string;
+  NecessaryTaskInfoData: string;
+  ReceivableDeviationInformation: string;
+  CautionSafetyandCompliance: string;
+  CriticalQualityIssue: string;
+  CriticalProcessTaskCheck: string;
+  RecurrentProficiencyChecks: string;
+  PerformanceMetrixData: string;
+  MisconductData: string;
+  AuditFocus: string;
+  ManagementDecision: string;
+  Escalation: string;
+  TaskCompletion: string;
+  CompletionData: string;
+  DeliveryInfoData: string;
+  RequirementClassA: string;
+  RequirementClassB: string;
+  RequirementClassC: string;
+  RequirementClassD: string;
+  RequirementClassE: string;
+  RequirementClassF: string;
+  RequirementClassG: string;
+  RequirementClassH: string;
+  RequirementClassI: string;
+  RequirementClassJ: string;
+  RequirementClassK: string;
+  RequirementClassL: string;
+  RequirementClassM: string;
 }
 
 export interface dateI{

@@ -8,7 +8,7 @@ export const getSteps = async(numberResults: number = 1000)
   try {
     const eventListQuery: any = `
     query{
-        allM_Content_WorkInstruction{
+      allM_Content_WorkInstructionTemplate{
         total
         results {
           ${stepQuery}

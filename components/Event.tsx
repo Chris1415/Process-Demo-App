@@ -37,7 +37,19 @@ function Event({ event, renditionType }: Props) {
                       </Card>
                     </Col>
                     <Col md={6}>
-                      <div>{event?.Description}</div>
+                      <div><b>Description:</b> {event?.Description}</div>
+                      <hr/>
+                      <div><b>Work Description:</b> {event?.ProcessDescription}</div>
+                      <hr/>
+                      <div><b>Process and Sub Process:</b> {event?.SubProcess}</div>
+                      <hr/>
+                      <div><b>Task:</b> {event?.Task}</div>
+                      <hr/>
+                      <div><b>Work Cluster:</b> {event?.WorkCluster}</div>
+                      <hr/>
+                      <div><b>Work Package:</b> {event?.WorkPackage}</div>
+                      <hr/>
+                      <div><b>Portfolio and Service:</b> {event?.ProductFamilies?.join(" | ")}</div>
                     </Col>
                   </Row>
                 </Container>
@@ -66,7 +78,7 @@ function Event({ event, renditionType }: Props) {
                     <Card.Body className={styles.space}>
                       <Card.Title>{step?.Title}</Card.Title>
                       <Card.Text className={styles.spaceXL}>
-                        <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
+                        <div/>
                       </Card.Text>
                       <Link href={{ pathname: "/Steps/Detail/" + step?.Id }}>
                         <a className={styles.CardLink}>

@@ -37,8 +37,348 @@ function Step({ step, renditionType }: Props) {
                       </Card>
                     </Col>
                     <Col md={6}>
-                      <h1>{step?.Title}</h1>
-                      <div dangerouslySetInnerHTML={{ __html: step?.Text }} />
+                      {step?.Title != "" ? (
+                        <>
+                          <div>
+                            <b>Work Breakdown Step:</b> {step?.Title}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.StepNumber != "" ? (
+                        <>
+                          <div>
+                            <b>Step Number:</b> {step?.StepNumber}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.GeneralSubjectInfo != "" ? (
+                        <>
+                          <div>
+                            <b>General Subject Info:</b>{" "}
+                            {step?.GeneralSubjectInfo}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.SupportiveWBSStepInfo != "" ? (
+                        <>
+                          <div>
+                            <b>Supportive WBS Step Info:</b>{" "}
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: step?.SupportiveWBSStepInfo,
+                              }}
+                            />
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.NecessaryTaskInfoData != "" ? (
+                        <>
+                          <div>
+                            <b>Necessary Task Info Data:</b>{" "}
+                            {step?.NecessaryTaskInfoData}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.ReceivableDeviationInformation != "" ? (
+                        <>
+                          <div>
+                            <b>Receivable Deviation Information:</b>{" "}
+                            {step?.ReceivableDeviationInformation}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.CautionSafetyandCompliance != "" ? (
+                        <>
+                          <div>
+                            <b>Caution Safety and Compliance:</b>{" "}
+                            {step?.CautionSafetyandCompliance}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.CriticalQualityIssue != "" ? (
+                        <>
+                          <div>
+                            <b>Critical Quality Issue:</b>{" "}
+                            {step?.CriticalQualityIssue}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.CriticalProcessTaskCheck != "" ? (
+                        <>
+                          <div>
+                            <b>Critical Process Task Check:</b>{" "}
+                            {step?.CriticalProcessTaskCheck}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.RecurrentProficiencyChecks != "" ? (
+                        <>
+                          <div>
+                            <b>Recurrent Proficiency Checks:</b>{" "}
+                            {step?.RecurrentProficiencyChecks}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.PerformanceMetrixData != "" ? (
+                        <>
+                          <div>
+                            <b>Performance Metrix Data:</b>{" "}
+                            {step?.PerformanceMetrixData}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.MisconductData != "" ? (
+                        <>
+                          <div>
+                            <b>Misconduct Data:</b> {step?.MisconductData}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      {step?.AuditFocus != "" ? (
+                        <>
+                          <div>
+                            <b>Audit Focus:</b> {step?.AuditFocus}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      {step?.ManagementDecision != "" ? (
+                        <>
+                          <div>
+                            <b>Management Decision:</b>{" "}
+                            {step?.ManagementDecision}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.Escalation != "" ? (
+                        <>
+                          <div>
+                            <b>Escalation:</b> {step?.Escalation}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.TaskCompletion != "" ? (
+                        <>
+                          <div>
+                            <b>Task Completion:</b> {step?.TaskCompletion}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.CompletionData != "" ? (
+                        <>
+                          <div>
+                            <b>Completion Data:</b> {step?.CompletionData}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+
+                      {step?.DeliveryInfoData != "" ? (
+                        <>
+                          <div>
+                            <b>Delivery Info Data:</b> {step?.DeliveryInfoData}
+                          </div>
+                          <hr />
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      <div>
+                        {step?.RequirementClassA != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class A:</b>{" "}
+                              {step?.RequirementClassA}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassB != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class B:</b>{" "}
+                              {step?.RequirementClassB}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassC != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class C:</b>{" "}
+                              {step?.RequirementClassC}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassD != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class D:</b>{" "}
+                              {step?.RequirementClassD}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassE != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class E:</b>{" "}
+                              {step?.RequirementClassE}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassF != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class F:</b>{" "}
+                              {step?.RequirementClassF}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassG != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class G:</b>{" "}
+                              {step?.RequirementClassG}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassH != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class H:</b>{" "}
+                              {step?.RequirementClassH}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassI != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class I:</b>{" "}
+                              {step?.RequirementClassI}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassJ != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class J:</b>{" "}
+                              {step?.RequirementClassJ}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassK != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class K:</b>{" "}
+                              {step?.RequirementClassK}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassL != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class L:</b>{" "}
+                              {step?.RequirementClassL}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                        {step?.RequirementClassM != "" ? (
+                          <>
+                            <div>
+                              <b>Requirement Class M:</b>{" "}
+                              {step?.RequirementClassM}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                      <hr />
                       {step?.Previous != "" ?? false ? (
                         <div>
                           <Link
@@ -110,7 +450,7 @@ function Step({ step, renditionType }: Props) {
               )
             : null}
         </Row>
-        <hr/>
+        <hr />
         <Row>
           {step?.Assets?.length > 0
             ? step.Assets.map((asset) =>
