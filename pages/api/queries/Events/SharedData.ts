@@ -5,9 +5,6 @@ export const eventQuery =
   id
   processDescription
   process_Name
-  processToSubProcess{
-    taxonomyName
-  }
   task
   processToProductFamily{
     results{
@@ -28,6 +25,7 @@ export const eventQuery =
     id
     ... on M_Content_WorkInstructionTemplate {
       content_Name
+      workInstructionTemplate_StepNumber
       reference_WorkInstruction_NextStep_Children {
         results{
           ... on M_Content_WorkInstructionTemplate {

@@ -168,33 +168,9 @@ function singleEventParse(eventFeed: any): eventI {
 //#region Interface
 
 function SortSteps(steps: stepI[]): stepI[] {
-  var sortedSteps: stepI[] = [];
-  var firstStep = null;
-  for (var i = 0; i < steps.length; i++) {
-    firstStep = steps[i];
-    if (firstStep.Previous == "") {
-      sortedSteps.push(firstStep);
-      break;
-    }
-  }
-
-  if (firstStep == null) {
-    return steps;
-  }
-
-  var nextMatch = firstStep.Next;
-  var i = 0;
-  do {
-    var nextStep = steps[i];
-    if (nextStep != null && (nextStep?.Id ?? "") == nextMatch) {
-      sortedSteps.push(nextStep);
-      nextMatch = nextStep.Next;
-      i = -1;
-    }
-    i++;
-  } while (nextStep != null);
-
-  return sortedSteps;
+  return steps.sort(
+    (a, b) => parseInt(a.StepNumber, 10) - parseInt(b.StepNumber, 10)
+  );
 }
 
 export function assetParse(assetFeed: any): assetI {
@@ -232,10 +208,12 @@ export function eventListParse(eventFeed: any): eventI[] {
 export function stepListParse(eventFeed: any): stepI[] {
   var eventArray: stepI[] = [];
   eventFeed.data.allM_Content_WorkInstructionTemplate?.results?.length > 0
-    ? eventFeed.data.allM_Content_WorkInstructionTemplate.results.map((e: any) => {
-        var event = stepParse(e);
-        eventArray.push(event);
-      })
+    ? eventFeed.data.allM_Content_WorkInstructionTemplate.results.map(
+        (e: any) => {
+          var event = stepParse(e);
+          eventArray.push(event);
+        }
+      )
     : null;
 
   return eventArray;
