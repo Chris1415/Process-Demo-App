@@ -205,3 +205,14 @@
 .NoPadding{
     padding-bottom: 0 !important;
 }
+
+.pseudoTable:nth-of-type(odd) {
+    background-color: #e8e8e8;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .pseudoTable:nth-of-type(even) {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
