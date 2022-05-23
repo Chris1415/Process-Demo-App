@@ -1,4 +1,5 @@
 import { assetQuery } from "../Assets/SharedData";
+import { stepQuery } from "../Steps/SharedData";
 
 export const eventQuery =
   `
@@ -24,8 +25,7 @@ export const eventQuery =
   results {
     id
     ... on M_Content_WorkInstructionTemplate {
-      content_Name
-      workInstructionTemplate_StepNumber
+      ${stepQuery}
       reference_WorkInstruction_NextStep_Children {
         results{
           ... on M_Content_WorkInstructionTemplate {
