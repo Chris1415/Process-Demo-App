@@ -75,7 +75,8 @@ function Step({ step, renditionType }: Props) {
                         <>
                           <div>
                             <b>Supportive WBS Step Info:</b>{" "}
-                            <div className={styles.dontbreakout}
+                            <div
+                              className={styles.dontbreakout}
                               dangerouslySetInnerHTML={{
                                 __html: step?.SupportiveWBSStepInfo,
                               }}
@@ -452,18 +453,20 @@ function Step({ step, renditionType }: Props) {
         </Row>
         <hr />
         <Row>
-          {step?.Assets?.length > 0
-            ? step.Assets.map((asset) =>
-                asset.Type == "mp4" ? (
-                  <Col md={12}>
-                    <ReactPlayer
-                      controls={true}
-                      url={asset?.Renditions[0]?.url ?? ""}
-                    />
-                  </Col>
-                ) : null
-              )
-            : null}
+          <Col md={12}>
+            {step?.Assets?.length > 0
+              ? step.Assets.map((asset) =>
+                  asset.Type == "mp4" ? (
+                      <ReactPlayer
+                        controls={true}
+                        url={asset?.Renditions[0]?.url ?? ""}
+                        width='100%'
+                        height='100%'
+                      />
+                  ) : null
+                )
+              : null}
+          </Col>
         </Row>
       </Container>
     </>
