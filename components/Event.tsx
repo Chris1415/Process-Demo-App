@@ -168,7 +168,7 @@ function Event({ event, renditionType }: Props) {
                           <>
                             <div>
                               <b>Supportive WBS Step Info:</b>{" "}
-                              <div
+                              <div className={styles.dontbreakout}
                                 dangerouslySetInnerHTML={{
                                   __html: step?.SupportiveWBSStepInfo,
                                 }}
